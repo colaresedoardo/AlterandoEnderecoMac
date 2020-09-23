@@ -17,7 +17,7 @@ def get_arguments():
     return options
 
 
-
+#usando o comando subprocess para chamada comandos de linhad de comando do próprio sistema operacional(debian)
 def change_mac(interface,new_mac):
     print(" [+] mudando endereco mac " + interface + " to " + new_mac)
     subprocess.call(["ifconfig", interface, "down"])
@@ -28,6 +28,7 @@ def change_mac(interface,new_mac):
 def get_current_mac(interface):
     ifconfig_result = subprocess.check_output(["ifconfig", interface])
     ifconfig_result = ifconfig_result.decode('utf-8')
+# Usando regex para pegar apenas os caracteres correspondente do endereço MAC
     mac_address_search_result = re.search(r"\w\w:\w\w:\w\w:\w\w:\w\w:\w\w", ifconfig_result)
     if mac_address_search_result:
         return  mac_address_search_result.group(0)
