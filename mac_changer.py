@@ -4,6 +4,7 @@ import optparse
 import re
 #programa responsável por mudar o MAC address de uma interface.
 
+#pegar os dados da linha de comando
 def get_arguments():
     parser = optparse.OptionParser()
     parser.add_option("-i", "--interface", dest="interface", help="Altera o Endereco mac")
